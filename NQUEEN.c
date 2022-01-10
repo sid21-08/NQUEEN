@@ -19,7 +19,7 @@ int main(){
 	       // Writing output to STDOUT
 	
 	N=num;
-	if(!NQueens(num))
+	if(NQueens(num))
 	{
 	    for(i=0;i<N;i++)
 	    {
@@ -33,7 +33,7 @@ int main(){
 }
 int NQueens(int n){
 	if(n==0)
-	return 0;
+	return 1;
 	int i,j;
 	for(i=0;i<N;i++)
 	{
@@ -42,13 +42,13 @@ int NQueens(int n){
 			if(!is_attacked(i,j)&&boards[i][j]!=1)
 			{
 			    boards[i][j]=1;
-			    if(!NQueens(n-1))
-			        return 0;
+			    if(NQueens(n-1))
+			        return 1;
 			    boards[i][j]=0;
 			}   
 		}
 	}
-	return 1;
+	return 0;
 }
 int is_attacked(int k,int l)
 {
@@ -73,5 +73,3 @@ int is_attacked(int k,int l)
     }
     return 0;
 }
-
-
